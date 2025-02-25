@@ -1,0 +1,11 @@
+.env
+_pycache_
+__pycache__
+faiss_index
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyd
