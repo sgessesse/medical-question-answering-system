@@ -1,26 +1,26 @@
-# Core dependencies
-fastapi==0.109.2
-uvicorn==0.27.1
-streamlit==1.31.1
-pydantic==2.6.1
-python-dotenv==1.0.1
+# API and Web UI
+fastapi>=0.104.1
+uvicorn>=0.24.0
+streamlit>=1.28.0
+pydantic>=2.4.2
+python-dotenv>=1.0.0
 
-# LangChain components
-langchain==0.1.9
-langchain-community==0.0.24
+# LangChain Components
+langchain>=0.0.335
+langchain_community>=0.0.6
+langchain-huggingface>=0.0.2
 
-# Document processing
-faiss-cpu==1.7.4
-sentence-transformers==2.5.1
+# Vector Database and Embeddings
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
 
-# Machine Learning & NLP
-transformers==4.37.2
-torch==2.2.0
-google-generativeai==0.3.2
-
-# API and HTTP
-requests==2.31.0
+# NLP and ML
+transformers>=4.35.0
+torch>=2.1.0
+google-generativeai>=0.3.1
 
 # Utilities
-numpy==1.26.4
-pandas==2.2.0 
+requests>=2.31.0
+pandas>=2.1.1
+numpy>=1.26.0
+pillow>=10.0.1 

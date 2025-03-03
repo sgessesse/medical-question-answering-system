@@ -1,35 +1,49 @@
 # Medical Question Answering System
 
-A modular Retrieval Augmented Generation (RAG) system designed for medical question answering, built with a multi-agent architecture that separates query processing, retrieval, and generation components.
+A specialized AI-powered system for answering medical questions using a combination of retrieval-augmented generation, medical entity extraction, and state-of-the-art language models.
 
-## Overview
+![Medical QA System](https://img.shields.io/badge/Medical%20QA-System-blue)
+![Python](https://img.shields.io/badge/Python-3.10+-green)
+![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
 
-This project implements a RAG system specifically tailored for medical domain questions, using a collection of medical textbooks from [Hugging Face's medical_textbook_en dataset](https://huggingface.co/datasets/Gaoj124/medical_textbook_en). The system is built with modularity in mind, making it easily adaptable to other domains such as legal or technical documentation.
+## Features
 
-### Key Features
-
-- **Modular Architecture**: Separate agents for query processing, retrieval, and generation
-- **Medical Entity Recognition**: Identifies medical terms and concepts in queries
-- **Efficient Document Retrieval**: Uses FAISS for fast similarity search
-- **Context-Aware Generation**: Generates answers based on retrieved medical literature
-- **User-Friendly Interface**: Streamlit-based web interface
+- **Advanced Document Retrieval**: Uses semantic search with FAISS vector database to find relevant medical information
+- **Medical Entity Recognition**: Extracts medical terms from queries using specialized biomedical NER
+- **Query Expansion**: Improves search by expanding queries with recognized medical entities
+- **Evidence-Based Answers**: Generates answers with direct citations to medical sources
+- **User-Friendly Interface**: Clean Streamlit UI with organized display of results and sources
+- **Production-Ready API**: FastAPI backend with proper error handling and documentation
 
 ## Architecture
 
-The system consists of several key components:
+The system integrates multiple components:
 
-1. **Query Processing** (`query_processing.py`): Uses biomedical NER to extract medical entities
-2. **Document Retrieval** (`retrieval.py`): FAISS-based retrieval system
-3. **Answer Generation** (`generation.py`): Uses Google's Gemini model for answer generation
-4. **Data Ingestion** (`data_ingestion.py`): Processes and indexes medical documents
-5. **API Server** (`app.py`): FastAPI-based backend server
-6. **Web Interface** (`streamlit_app.py`): Streamlit-based user interface
+1. **Query Processing**: Analyzes and expands medical queries
+2. **Document Retrieval**: Finds relevant sections from medical textbooks
+3. **Answer Generation**: Creates comprehensive, evidence-based answers
+4. **User Interface**: Presents information in an accessible way
 
-## Setup
+![Architecture Diagram](architecture_diagram.png)
 
-1. Clone the repository: 
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- FastAPI
+- Streamlit
+- LangChain
+- Hugging Face Transformers
+- FAISS vector database
+- Google Gemini API key
+
+### Installation
+
+1. Clone the repository:
 ```bash
-git clone https://github.com/sgessesse/medical-question-answering-system.git
+git clone https://github.com/yourusername/medical-question-answering-system.git
 cd medical-question-answering-system
 ```
 
@@ -38,45 +52,84 @@ cd medical-question-answering-system
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file in the root directory with the following variables:
-```bash
-GOOGLE_API_KEY=your_api_key_here
+3. Set up environment variables:
+Create a `.env` file in the project root with your API keys:
+```
+GOOGLE_API_KEY=your_gemini_api_key
 ```
 
-4. Create the document index:
+4. Download the medical textbooks dataset:
+The system uses a medical textbooks dataset from Hugging Face. You need to download it and place it in a `sample_docs` directory:
 ```bash
+# Create a sample_docs directory
+mkdir -p sample_docs
+
+# Download the dataset from Hugging Face
+# Visit: https://huggingface.co/datasets/Gaoj124/medical_textbook_en
+# Follow the instructions to download the textbooks and save them in the sample_docs folder
+```
+
+5. Create the FAISS index:
+Once you have downloaded the textbooks, you need to create the FAISS index:
+```bash
+# Run the data ingestion script to create the FAISS index
 python data_ingestion.py
 ```
-Note: This step is required before running the application as the FAISS index is not included in the repository due to size constraints.
+This step is required before running the application as the FAISS index is not included in the repository.
 
-## Running the Application
-
-1. Start the FastAPI server:
+6. Run the system:
 ```bash
-uvicorn app:app --reload
+# Start the FastAPI backend
+python -m uvicorn app:app --reload --port 8000
+
+# In a separate terminal, start the Streamlit UI
+python -m streamlit run streamlit_app.py
 ```
 
-2. In a new terminal, start the Streamlit interface:
-```bash
-streamlit run streamlit_app.py
-```
-
-3. Open your browser and navigate to `http://localhost:8501`
+7. Access the application:
+   - API: http://localhost:8000
+   - UI: http://localhost:8501
 
 ## Usage
 
-1. Enter your medical question in the text input field
-2. Click "Submit Query" or press Enter
-3. View the generated answer, detected medical entities, and source documents
+1. Enter a medical question in the text area
+2. Click "Submit Query"
+3. View the detailed answer with source citations
+4. Expand source sections for more information
 
-## Adapting to Other Domains
+### Example Questions
 
-The modular nature of this system makes it adaptable to other domains. To adapt:
+- "What are the symptoms of diabetes?"
+- "How is rheumatoid arthritis diagnosed?"
+- "What are the side effects of statins?"
+- "What treatments are available for depression?"
 
-1. Replace the document dataset in `data_ingestion.py`
-2. Update the NER model in `query_processing.py`
-3. Adjust the prompt template in `generation.py`
-4. Modify the UI labels in `streamlit_app.py`
+## Project Structure
+
+```
+medical-question-answering-system/
+├── app.py                 # FastAPI backend application
+├── streamlit_app.py       # Streamlit frontend interface
+├── data_ingestion.py      # Document loading and indexing
+├── retrieval.py           # Vector search and document retrieval
+├── generation.py          # Answer generation with Gemini
+├── query_processing.py    # Medical entity extraction and query expansion
+├── faiss_index/           # Vector database (not in repo, created on setup)
+├── sample_docs/           # Medical textbook resources (not in repo)
+├── .env                   # Environment variables (not in repo)
+└── requirements.txt       # Project dependencies
+```
+
+## Data Sources
+
+The system uses medical textbooks from the [Hugging Face medical_textbook_en dataset](https://huggingface.co/datasets/Gaoj124/medical_textbook_en), including:
+- Harrison's Internal Medicine
+- Gray's Anatomy
+- DSM-5 Psychiatry
+- Robbins Pathology
+- And many other medical references
+
+You must download these textbooks from the provided link and place them in the `sample_docs` directory to recreate the FAISS index for the retrieval system to work.
 
 ## Contributing
 
@@ -88,6 +141,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Medical textbook dataset from [Hugging Face](https://huggingface.co/datasets/Gaoj124/medical_textbook_en)
-- Biomedical NER model from d4data
-- Google's Gemini model for text generation
+- The [LangChain](https://github.com/hwchase17/langchain) team for the retrieval framework
+- [Hugging Face](https://huggingface.co/) for NLP models and embedding support
+- [The Biomedical NER](https://huggingface.co/d4data/biomedical-ner-all) model from d4data
+- [The medical_textbook_en dataset](https://huggingface.co/datasets/Gaoj124/medical_textbook_en) used for the knowledge base
