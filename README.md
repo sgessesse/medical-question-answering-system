@@ -43,7 +43,7 @@ The system integrates multiple components:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/medical-question-answering-system.git
+git clone https://github.com/sgessesse/medical-question-answering-system.git
 cd medical-question-answering-system
 ```
 
