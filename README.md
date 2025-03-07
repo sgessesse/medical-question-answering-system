@@ -6,26 +6,37 @@ A specialized AI-powered system for answering medical questions using a combinat
 ![Python](https://img.shields.io/badge/Python-3.10+-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
+![RAG](https://img.shields.io/badge/RAG-Implementation-purple)
+
+## Live Demo
+Access the deployed application at: [Medical QA System](https://d25x3qpabf1br0.cloudfront.net/)
+
+The application is deployed using AWS Elastic Beanstalk with Python 3.9 platform and distributed globally through Amazon CloudFront.
+
+## Overview
+
+This project implements a Retrieval Augmented Generation (RAG) system specifically designed for medical question answering. RAG combines the power of large language models with a specialized knowledge base of medical textbooks to provide accurate, evidence-based answers with proper source citations.
+
+Unlike traditional AI systems that rely solely on pre-trained knowledge, this RAG implementation retrieves relevant medical information from authoritative sources before generating responses, ensuring higher accuracy and traceability of medical information.
 
 ## Features
 
-- **Advanced Document Retrieval**: Uses semantic search with FAISS vector database to find relevant medical information
-- **Medical Entity Recognition**: Extracts medical terms from queries using specialized biomedical NER
-- **Query Expansion**: Improves search by expanding queries with recognized medical entities
-- **Evidence-Based Answers**: Generates answers with direct citations to medical sources
-- **User-Friendly Interface**: Clean Streamlit UI with organized display of results and sources
-- **Production-Ready API**: FastAPI backend with proper error handling and documentation
+- **Intelligent Query Processing**: Extracts and analyzes medical entities to enhance search accuracy
+- **Evidence-Based Answers**: Generates responses using verified medical textbooks with direct source citations
+- **Advanced Search**: Combines semantic search and Maximum Marginal Relevance (MMR) for relevant and diverse results
+- **Modern Interface**: Clean, responsive UI with organized display of answers, sources, and medical entity detection
 
 ## Architecture
 
-The system integrates multiple components:
+The system follows a modern microservices architecture:
 
-1. **Query Processing**: Analyzes and expands medical queries
-2. **Document Retrieval**: Finds relevant sections from medical textbooks
-3. **Answer Generation**: Creates comprehensive, evidence-based answers
-4. **User Interface**: Presents information in an accessible way
-
-![Architecture Diagram](architecture_diagram.png)
+1. **Frontend**: Streamlit-based UI for user interaction and result visualization
+2. **Backend API**: FastAPI service handling query processing and response generation
+3. **Knowledge Base**: FAISS vector database storing medical textbook embeddings
+4. **AI Models**: 
+   - Biomedical NER for medical entity recognition
+   - Sentence transformers for semantic search
+   - Google Gemini for answer generation
 
 ## Getting Started
 
