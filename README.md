@@ -3,7 +3,7 @@
 A specialized AI-powered system for answering medical questions using a combination of retrieval-augmented generation, medical entity extraction, and state-of-the-art language models.
 
 ![Medical QA System](https://img.shields.io/badge/Medical%20QA-System-blue)
-![Python](https://img.shields.io/badge/Python-3.10+-green)
+![Python](https://img.shields.io/badge/Python-3.9+-green)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-teal)
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
 ![RAG](https://img.shields.io/badge/RAG-Implementation-purple)
