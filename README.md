@@ -25,6 +25,7 @@ Unlike traditional AI systems that rely solely on pre-trained knowledge, this RA
 - **Evidence-Based Answers**: Generates responses using verified medical textbooks with direct source citations
 - **Advanced Search**: Combines semantic search and Maximum Marginal Relevance (MMR) for relevant and diverse results
 - **Modern Interface**: Clean, responsive UI with organized display of answers, sources, and medical entity detection
+- **Production Performance**: Load-tested with Apache JMeter to deliver 37 RPM throughput on cost-efficient 2GB RAM instances
 
 ## Architecture
 
@@ -42,7 +43,7 @@ The system follows a modern microservices architecture:
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.9+
 - FastAPI
 - Streamlit
 - LangChain
