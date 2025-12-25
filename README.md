@@ -8,11 +8,6 @@ A specialized AI-powered system for answering medical questions using a combinat
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)
 ![RAG](https://img.shields.io/badge/RAG-Implementation-purple)
 
-## Live Demo
-Access the deployed application at: [Medical QA System](https://d25x3qpabf1br0.cloudfront.net/)
-
-The application is deployed using AWS Elastic Beanstalk with Python 3.9 platform and distributed globally through Amazon CloudFront.
-
 ## Overview
 
 This project implements a Retrieval Augmented Generation (RAG) system specifically designed for medical question answering. RAG combines the power of large language models with a specialized knowledge base of medical textbooks to provide accurate, evidence-based answers with proper source citations.
